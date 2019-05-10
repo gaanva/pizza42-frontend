@@ -1,0 +1,34 @@
+<div class="container col-md-12"> 
+  <div>
+      <button (click)="requestOrder()" class="btn btn-success" [disabled]="!auth.isAuthenticated()">Create your Order!</button>
+      <p *ngIf="!auth.isAuthenticated()" class="text-warning">Login is required.</p>
+  </div> 
+<h2>Pizzas:</h2>  
+<div class="table-responsive table-container">  
+  <table class="table table-dark table-hover table-striped">  
+    <thead class="thead-light">  
+      <tr>  
+        <th>Pizza name</th>  
+        <th>Description</th> 
+        <th>Price($)</th> 
+        <th>Quantity</th>
+        <th>Order</th> 
+      </tr>  
+    </thead>  
+    <tbody>  
+      <tr *ngFor="let pizza of pizzas"> 
+         
+        <td>{{pizza.pizza}}</td>  
+        <td>{{pizza.description}}</td>
+        <td>{{pizza.price | currency : "USD" : true}}</td> 
+        <td>1</td> 
+        <td>  
+          <button (click)="AddToOrder(pizza)" [disabled]="!auth.isAuthenticated()" class="btn btn-info"> Add to Order</button>  
+          <p *ngIf="!auth.isAuthenticated()" class="text-warning">Login First.</p>
+        </td>  
+      </tr>  
+    </tbody>  
+  </table>  
+</div> 
+ 
+</div> 
