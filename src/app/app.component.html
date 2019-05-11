@@ -24,6 +24,13 @@
           Log Out
       </button>
 
+      <button
+        class="btn btn-primary btn-margin"
+        *ngIf="auth.isAuthenticated() && auth.userHasScopes(['write:pizzas'])"
+        routerLink="/admin">
+          Admin Area
+      </button>
+
       <h3 class="nickname">
         {{ profile?.nickname }}
       </h3>

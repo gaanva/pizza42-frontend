@@ -8,6 +8,8 @@ import { PizzaOrderService } from './pizza-order.service';
 import { ListPizzasComponent } from './list-pizzas/list-pizzas.component';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthService } from "./auth/auth.service";
+import { AuthGuardService } from './auth/auth-guard.service';
+import { ScopeGuardService } from './auth/scope-guard.service';
 import { CallbackComponent } from './callback/callback.component';
 import { ProfileComponent } from './profile/profile.component';
 import { AdminComponent } from './admin/admin.component';
@@ -25,7 +27,7 @@ import { AdminComponent } from './admin/admin.component';
     AppRoutingModule,
     HttpClientModule
   ],
-  providers: [PizzaOrderService, AuthService],
+  providers: [PizzaOrderService, AuthService, AuthGuardService, ScopeGuardService,],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

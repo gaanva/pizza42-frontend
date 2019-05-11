@@ -11,7 +11,7 @@ const routes: Routes = [
   { path: '', component: ListPizzasComponent, pathMatch: 'full' },
   { path: 'callback', component: CallbackComponent },
   { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
-  { path: 'admin', component: AdminComponent, canActivate: [ScopeGuard], data: { expectedScopes: ['write:messages']} },
+  { path: 'admin', component: AdminComponent, canActivate: [ScopeGuard], data: { expectedScopes: ['create:pizza']} },
   { path: '**', redirectTo: '' }
 ];
 
