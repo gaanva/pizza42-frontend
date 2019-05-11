@@ -9,21 +9,25 @@ export class AuthService {
   private _idToken: string;
   private _accessToken: string;
   private _expiresAt: number;
-  
+  private _scopes: string;
+
   userProfile: any; //for query user information
-  
+  requestedScopes: string = 'openid profile read:messages write:messages';
+
   auth0 = new auth0.WebAuth({
     clientID: AUTH_CONFIG.clientID,
     domain: AUTH_CONFIG.domain,
     responseType: 'token id_token',
     redirectUri: AUTH_CONFIG.callbackURL,
-    scope:'openid profile' //for user profile information...
+    audience: AUTH_CONFIG.apiUrl,
+    scope:this.requestedScopes//for user profile information...
   });
 
   constructor(public router: Router) {
     this._idToken = '';
     this._accessToken = '';
     this._expiresAt = 0;
+    this._scopes = '';
   }
 
   get accessToken(): string {
@@ -54,9 +58,16 @@ export class AuthService {
   private localLogin(authResult): void {
     // Set the time that the access token will expire at
     const expiresAt = (authResult.expiresIn * 1000) + Date.now();
+
+    // If there is a value on the `scope` param from the authResult,
+    // use it to set scopes in the session for the user. Otherwise
+    // use the scopes as requested. If no scopes were requested,
+    // set it to nothing
+    const scopes = authResult.scope || this.requestedScopes || '';
     this._accessToken = authResult.accessToken;
     this._idToken = authResult.idToken;
     this._expiresAt = expiresAt;
+    this._scopes = JSON.stringify(scopes);
   }
 
   public renewTokens(): void {
@@ -99,6 +110,11 @@ export class AuthService {
       }
       cb(err, profile);
     });
+  }
+
+  public userHasScopes(scopes: Array<string>): boolean {
+    const grantedScopes = JSON.parse(this._scopes).split(' ');
+    return scopes.every(scope => grantedScopes.includes(scope));
   }
 
 }
