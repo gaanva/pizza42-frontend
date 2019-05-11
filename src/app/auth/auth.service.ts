@@ -12,7 +12,7 @@ export class AuthService {
   private _scopes: string;
 
   userProfile: any; //for query user information
-  requestedScopes: string = 'openid profile read:messages write:messages';
+  requestedScopes: string = 'openid profile read:pizza create:pizza';
 
   auth0 = new auth0.WebAuth({
     clientID: AUTH_CONFIG.clientID,
@@ -45,7 +45,9 @@ export class AuthService {
   public handleAuthentication(): void {
     this.auth0.parseHash((err, authResult) => {
       if (authResult && authResult.accessToken && authResult.idToken) {
+        console.log(JSON.stringify(authResult.scope));
         this.localLogin(authResult);
+        
         this.router.navigate(['/']);
       } else if (err) {
         this.router.navigate(['/']);
