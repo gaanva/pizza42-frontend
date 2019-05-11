@@ -1,0 +1,18 @@
+<h2>You are an Admin!</h2>
+<p>Only users who have a <code>scope</code> of <code>write:messages</code> in their <code>access_token</code> can see this area.</p>
+
+<hr>
+
+<h3>Create new Pizzas</h3><pre>yeah, admin has the power!</pre>
+<div>
+  <input #name placeholder="pizza name"/>
+  <input #description placeholder="description"/>
+  <input #price placeholder="price"/>
+
+  <button 
+  class="btn btn-primary"
+  (click)="adminCreatePizza(name.value, description.value, price.value)">
+    Post pizza!
+  </button>
+
+</div>

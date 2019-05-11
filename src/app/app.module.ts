@@ -10,13 +10,15 @@ import { HttpClientModule } from '@angular/common/http';
 import { AuthService } from "./auth/auth.service";
 import { CallbackComponent } from './callback/callback.component';
 import { ProfileComponent } from './profile/profile.component';
+import { AdminComponent } from './admin/admin.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ListPizzasComponent,
     CallbackComponent,
-    ProfileComponent
+    ProfileComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,
