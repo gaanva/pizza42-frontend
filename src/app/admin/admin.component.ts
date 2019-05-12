@@ -10,7 +10,7 @@ import {AuthService} from '../auth/auth.service';
 })
 export class AdminComponent implements OnInit {
 
-  API_URL = 'http://localhost:3001/api';
+  API_URL = 'http://localhost:3001';
   
   constructor(public auth: AuthService, private http: HttpClient) { }
 
@@ -20,12 +20,13 @@ export class AdminComponent implements OnInit {
   public adminCreatePizza(name, description, price): void {
     let pizza:PizzaModel = new PizzaModel(name, description, price);
     this.http
-      .post<PizzaModel>(`${this.API_URL}/pizza`, pizza, {
+      .post<PizzaModel>(`${this.API_URL}/pizza`, {pizza}, {
         headers: new HttpHeaders()
           .set('Authorization', `Bearer ${this.auth.accessToken}`)
       })
       .subscribe(
-        data => console.log("pizza successfully created"),
+        data => {console.log(data);
+                alert('pizza created sucessfully!')},
         error => {
             console.log(error);
             alert('Error creating new pizza.');
