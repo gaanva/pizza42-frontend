@@ -13,6 +13,7 @@ import { ScopeGuardService } from './auth/scope-guard.service';
 import { CallbackComponent } from './callback/callback.component';
 import { ProfileComponent } from './profile/profile.component';
 import { AdminComponent } from './admin/admin.component';
+import { CustomerOrdersComponent } from './customer-orders/customer-orders.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { AdminComponent } from './admin/admin.component';
     ListPizzasComponent,
     CallbackComponent,
     ProfileComponent,
-    AdminComponent
+    AdminComponent,
+    CustomerOrdersComponent
   ],
   imports: [
     BrowserModule,

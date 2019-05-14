@@ -36,15 +36,15 @@
         <button
         class="btn btn-primary btn-margin"
         *ngIf="auth.isAuthenticated() && auth.userHasScopes(['read:orders'])"
-        routerLink="/customerOrders">
+        routerLink="/orders">
           Customer Orders
         </button>
 
         <button
         class="btn btn-primary btn-margin"
         *ngIf="auth.isAuthenticated() && auth.userHasScopes(['read:users'])"
-        routerLink="/orders">
-          Customer Orders
+        routerLink="/userListReport">
+          Users Reports
         </button>
 
         <!-- For users only-->
