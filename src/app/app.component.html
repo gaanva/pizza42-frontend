@@ -4,12 +4,6 @@
     <div class="navbar-header">
       <!--a class="navbar-brand" href="#">Auth0 - Angular</a -->
 
-      <!--button
-        class="btn btn-primary btn-margin"
-        routerLink="/">
-          Home
-      </button-->
-
       <button
         class="btn btn-primary btn-margin"
         *ngIf="!auth.isAuthenticated()"
@@ -26,15 +20,42 @@
 
       <button
         class="btn btn-primary btn-margin"
-        *ngIf="auth.isAuthenticated() && auth.userHasScopes(['create:pizza'])"
-        routerLink="/admin">
-          Admin Area
+        *ngIf="auth.isAuthenticated()"
+        routerLink="/">
+          Home      
       </button>
 
-      <h3 class="nickname">
-        {{ profile?.nickname }}
-      </h3>
-    </div>
+      <!--For admins only-->
+      <button
+        class="btn btn-primary btn-margin"
+        *ngIf="auth.isAuthenticated() && auth.userHasScopes(['create:pizza'])"
+        routerLink="/admin">
+          Pizzas admin      
+        </button>
+
+        <button
+        class="btn btn-primary btn-margin"
+        *ngIf="auth.isAuthenticated() && auth.userHasScopes(['read:orders'])"
+        routerLink="/customerOrders">
+          Customer Orders
+        </button>
+
+        <button
+        class="btn btn-primary btn-margin"
+        *ngIf="auth.isAuthenticated() && auth.userHasScopes(['read:users'])"
+        routerLink="/orders">
+          Customer Orders
+        </button>
+
+        <!-- For users only-->
+        <button
+        class="btn btn-primary btn-margin"
+        *ngIf="auth.isAuthenticated() && auth.userHasScopes(['read:users'])"
+        routerLink="/userOrders">
+          My Orders
+        </button>
+
+      </div>
   </div>
 </nav>
 
