@@ -1,6 +1,6 @@
 <div class="container col-md-12"> 
   <div>
-      <button (click)="requestOrder()" class="btn btn-success" [disabled]="!auth.isAuthenticated()">Create your Order!</button>
+      <button (click)="createOrder()" class="btn btn-success" [disabled]="!auth.isAuthenticated()">Create your Order!</button>
       <p *ngIf="!auth.isAuthenticated()" class="text-warning">Login is required.</p>
   </div> 
 <h2>Pizzas:</h2>  
