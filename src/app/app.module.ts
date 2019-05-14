@@ -14,6 +14,8 @@ import { CallbackComponent } from './callback/callback.component';
 import { ProfileComponent } from './profile/profile.component';
 import { AdminComponent } from './admin/admin.component';
 import { CustomerOrdersComponent } from './customer-orders/customer-orders.component';
+import { UserListReportComponent } from './user-list-report/user-list-report.component';
+import { MyOrdersComponent } from './my-orders/my-orders.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,9 @@ import { CustomerOrdersComponent } from './customer-orders/customer-orders.compo
     CallbackComponent,
     ProfileComponent,
     AdminComponent,
-    CustomerOrdersComponent
+    CustomerOrdersComponent,
+    UserListReportComponent,
+    MyOrdersComponent
   ],
   imports: [
     BrowserModule,
