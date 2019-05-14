@@ -11,10 +11,11 @@ import {AuthService} from '../auth/auth.service';
 export class AdminComponent implements OnInit {
 
   API_URL = 'http://localhost:3001';
-  
+  pizzas: PizzaModel[];
   constructor(public auth: AuthService, private http: HttpClient) { }
 
   ngOnInit() {
+    this.getAllPizzas();
   }
 
   public adminCreatePizza(name, description, price): void {
@@ -26,11 +27,28 @@ export class AdminComponent implements OnInit {
       })
       .subscribe(
         data => {console.log(data);
-                alert('pizza created sucessfully!')},
+                alert('pizza created sucessfully!');
+                this.getAllPizzas();
+                this.pizzas = []},
         error => {
             console.log(error);
             alert('Error creating new pizza.');
         }
       );
+      
   }
+
+  getAllPizzas(){
+    return this.http.get<PizzaModel[]>(this.API_URL, {
+      headers: new HttpHeaders()
+        .set('Authorization', 'Bearer ${this.auth.accessToken}')
+    }).subscribe(data=>{
+      console.log('receiving pizza list!');
+      this.pizzas = data;
+    },
+    err=>{
+      console.log('error receiving pizza list!');
+      console.log(err);});
+  }
+
 }

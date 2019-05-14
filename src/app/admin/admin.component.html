@@ -1,18 +1,44 @@
 <h2>You are an Admin!</h2>
-<p>Only users who have a <code>scope</code> of <code>write:messages</code> in their <code>access_token</code> can see this area.</p>
-
-<hr>
-
 <h3>Create new Pizzas</h3><pre>yeah, admin has the power!</pre>
 <div>
-  <input #name placeholder="pizza name"/>
-  <input #description placeholder="description"/>
-  <input #price placeholder="price"/>
-
-  <button 
-  class="btn btn-primary"
-  (click)="adminCreatePizza(name.value, description.value, price.value)">
-    Post pizza!
-  </button>
-
+  <div class="form-group">
+    <input #name placeholder="pizza name"/>
+  </div>
+  <div class="form-group">
+      <textarea #description placeholder="description" rows = "5" cols = "60" name = "description"></textarea>
+  </div>
+  <div class="form-group"> 
+    <input #price placeholder="price"/>
+  </div>
+    <button type="submit"
+    class="btn btn-primary"
+    (click)="adminCreatePizza(name.value, description.value, price.value)">
+      Create pizza!
+    </button>
 </div>
+
+<h2>Pizzas List:</h2>  
+<div class="table-responsive table-container">  
+  <table class="table table-dark table-hover table-striped">  
+    <thead class="thead-light">  
+      <tr>  
+        <th>Pizza name</th>  
+        <th>Description</th> 
+        <th>Price($)</th>  
+      </tr>  
+    </thead>  
+    <tbody>  
+      <tr *ngFor="let pizza of pizzas"> 
+         
+        <td>{{pizza.pizza}}</td>  
+        <td>{{pizza.description}}</td>
+        <td>{{pizza.price | currency : "USD" : true}}</td>
+        
+        <td><button class="btn"><i class="fa fa-trash"></i></button>
+        <button class="btn"><i class="fa fa-edit"></i></button></td>
+        
+      </tr>  
+    </tbody>  
+  </table>  
+</div> 
+
