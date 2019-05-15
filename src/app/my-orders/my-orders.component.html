@@ -1,3 +1,30 @@
-<p>
-  my-orders works!
-</p>
+<h2>My Orders:</h2>  
+<div *ngIf="!orders">
+  <h3>What are you waiting for order the best pizza?</h3>
+</div>
+<div *ngFor="let order of orders">
+    <label>Date Time: {{order.date_time}}</label>
+    <label>User Mail: {{order.user_mail}}</label>
+    <label>Total: {{order.total}}</label>
+    <div class="table-responsive table-container">  
+    <table class="table table-dark table-hover table-striped">  
+      <thead class="thead-light">  
+        <tr>  
+          <th>Pizza</th>  
+          <th>Price</th> 
+          <th>Quantity</th>
+          <th>Subtotal</th> 
+        </tr>  
+      </thead>  
+      <tbody>  
+        <tr *ngFor="let orderDet of order.order_detail"> 
+            <td>{{orderDet.pizza}}</td>  
+          <td>{{orderDet.price}}</td>
+          <td>{{orderDet.quantity}}</td> 
+          <td>{{orderDet.subtotal}}</td>  
+        </tr>  
+      </tbody>  
+    </table>  
+  </div>
+</div>
+
