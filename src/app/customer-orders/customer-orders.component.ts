@@ -20,7 +20,7 @@ export class CustomerOrdersComponent implements OnInit {
 
   getCustomerOrders(){
     //user email is nedeed...
-    let headers = new HttpHeaders().set('Authorization', 'Bearer ${this.auth.accessToken}')
+    let headers = new HttpHeaders().set('Authorization', `Bearer ${this.auth.accessToken}`)
     
     this.http.get<Order[]>(this.API_URL+'orders', {headers: headers})
       .subscribe(data=>{

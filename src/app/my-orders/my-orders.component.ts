@@ -21,12 +21,13 @@ export class MyOrdersComponent implements OnInit {
 
   getMyOrders(){
     //user email is nedeed...
-    let headers = new HttpHeaders().set('Authorization', 'Bearer ${this.auth.accessToken}')
+    let headers = new HttpHeaders().set('Authorization', `Bearer ${this.auth.accessToken}`)
     let params = new HttpParams().set("user_email",this.user_profile.email); //Create new HttpParams
 
     this.http.get<Order[]>(this.API_URL+'myOrders', {headers: headers, params: params})
       .subscribe(data=>{
           console.log('receiving My Orders list!');
+          console.log(data)
           this.orders = data;
         },
         err=>{
