@@ -45,20 +45,20 @@ export class ListPizzasComponent implements OnInit {
       console.log(order);
 
       this.http
-      .post<Order>(`${this.API_URL}/pizza`, {order}, {
+      .post<Order>(`${this.API_URL}/order`, {order}, {
         headers: new HttpHeaders()
           .set('Authorization', `Bearer ${this.auth.accessToken}`)
       })
       .subscribe(
-        data => {console.log(data);
-                alert('Order created sucessfully!');
-                this.getAllPizzas();
-                this.pizzas = []},
+        data => {
+          console.log(data);
+          alert('Order created sucessfully!');
+          },
         error => {
           alert('Error creating new pizza42 Order.');  
           console.log(error);
             
-        }
+          }
       );
       //Send this mock to the API create order service.
       //check first it the email is verified.
