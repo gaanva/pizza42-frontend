@@ -15,7 +15,7 @@ export class CustomerOrdersComponent implements OnInit {
   constructor(public auth:AuthService, private http: HttpClient) { }
   
   ngOnInit() {
-
+    this.getCustomerOrders();
   }
 
   getCustomerOrders(){

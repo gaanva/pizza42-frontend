@@ -47,11 +47,6 @@ export class AuthService {
       if (authResult && authResult.accessToken && authResult.idToken) {
         console.log(JSON.stringify(authResult.scope));
         this.localLogin(authResult);
-        //requesting user profile information
-        this.getProfile((err, profile) => {
-          console.log(profile);
-          this.userProfile = profile;
-        });
         this.router.navigate(['/']);
       } else if (err) {
         this.router.navigate(['/']);
@@ -118,9 +113,12 @@ export class AuthService {
     });
   }
 
+
   public userHasScopes(scopes: Array<string>): boolean {
     const grantedScopes = JSON.parse(this._scopes).split(' ');
     return scopes.every(scope => grantedScopes.includes(scope));
   }
+
+
 
 }

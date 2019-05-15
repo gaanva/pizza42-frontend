@@ -12,7 +12,7 @@ import { Order } from './order';
   styleUrls: ['./list-pizzas.component.css']
 })
 export class ListPizzasComponent implements OnInit {
-  user_profile:any;
+  userProfile:any;
   pizzas: PizzaModel[];
   order_in_progress : Object[];
   orders: Object[];
@@ -36,16 +36,16 @@ export class ListPizzasComponent implements OnInit {
 
   createOrder():void{
     //ORDER Mock test object
-    if(this.user_profile.email_veirified === true){
+    if(this.userProfile.email_verified === true){
       let order_details:OrderDetails[] = new Array(
                                             new OrderDetails('Bacalao Super Pizza',12,2),
                                             new OrderDetails('Peperoni Super Pizza',11,4));
-      let order:Order = new Order(new Date(), this.user_profile.email, order_details);
+      let order:Order = new Order(new Date(), this.userProfile.email, order_details);
       console.log('order created:');
       console.log(order);
 
       this.http
-      .post<Order>(`${this.API_URL}/order`, {order}, {
+      .post<Order>(`${this.API_URL}order`, {order}, {
         headers: new HttpHeaders()
           .set('Authorization', `Bearer ${this.auth.accessToken}`)
       })
@@ -74,10 +74,13 @@ export class ListPizzasComponent implements OnInit {
   }
 
   getProfileInformation():void{
-    if (this.auth.userProfile) {
-      this.user_profile = this.auth.userProfile; 
-       console.log(this.auth.userProfile);
-     }
+    //requesting user profile information
+    if(this.auth.accessToken !== ''){
+      this.auth.getProfile((err, profile) => {
+        console.log(profile);
+        this.userProfile = profile;
+      });
+    }
   }
   addToOrder(pizza):void{
     this.order_in_progress.push(pizza);
