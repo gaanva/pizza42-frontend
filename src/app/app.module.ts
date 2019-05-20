@@ -16,6 +16,9 @@ import { AdminComponent } from './admin/admin.component';
 import { CustomerOrdersComponent } from './customer-orders/customer-orders.component';
 import { UserListReportComponent } from './user-list-report/user-list-report.component';
 import { MyOrdersComponent } from './my-orders/my-orders.component';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import {FormsModule} from '@angular/forms';
+import { ModalUpdatePizzaComponent } from './modal-update-pizza/modal-update-pizza.component';
 
 @NgModule({
   declarations: [
@@ -26,14 +29,18 @@ import { MyOrdersComponent } from './my-orders/my-orders.component';
     AdminComponent,
     CustomerOrdersComponent,
     UserListReportComponent,
-    MyOrdersComponent
+    MyOrdersComponent,
+    ModalUpdatePizzaComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    NgbModule,
+    FormsModule
   ],
   providers: [PizzaOrderService, AuthService, AuthGuardService, ScopeGuardService,],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [ModalUpdatePizzaComponent]
 })
 export class AppModule { }

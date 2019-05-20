@@ -1,0 +1,12 @@
+<div class="modal-header">
+  <h4 class="modal-title" id="modal-basic-title">Updaate Pizza</h4>
+  <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+  <span aria-hidden="true">&times;</span>
+  </button>
+  </div>
+  <div class="modal-body">
+  <input [(ngModel)]="pizza.pizza" type="text">
+  <input [(ngModel)]="pizza.description" type="text">
+  <input [(ngModel)]="pizza.price" type="number">
+  <button (click)="updatePizza()" type="submit" class="btn btn-primary w-100">Update</button>
+</div>

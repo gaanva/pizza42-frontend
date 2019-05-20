@@ -28,17 +28,17 @@
       </tr>  
     </thead>  
     <tbody>  
-      <tr *ngFor="let pizza of pizzas"> 
+      <tr *ngFor="let pizza of pizzas; let pos=index"> 
          
         <td>{{pizza.pizza}}</td>  
         <td>{{pizza.description}}</td>
         <td>{{pizza.price | currency : "USD" : true}}</td>
         
-        <td><button class="btn"><i class="fa fa-trash"></i></button>
-        <button class="btn"><i class="fa fa-edit"></i></button></td>
+        <td><button class="btn" (click)="remove(pos)"><i class="fa fa-trash"></i></button>
+        <!--button class="btn" (click)="update(pizza)"><i class="fa fa-edit"></i></button></td-->
+        <button class="btn" (click)="openModal(pos)"><i class="fa fa-edit"></i></button></td>
         
       </tr>  
     </tbody>  
   </table>  
-</div> 
-
+</div>
