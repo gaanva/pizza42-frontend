@@ -71,7 +71,6 @@ export class AdminComponent implements OnInit {
           .subscribe(
           data => {
               console.log(data);
-              alert('pizza deleted sucessfully!');
               this.pizzas.splice(pos, 1);
             },
           error => {
