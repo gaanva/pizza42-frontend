@@ -1,6 +1,6 @@
 <div class="container col-md-12"> 
   <div>
-      <button (click)="createOrder()" class="btn btn-success" [disabled]="!auth.isAuthenticated()">Create your Order!</button>
+      <button (click)="openModal()" class="btn btn-success" [disabled]="!auth.isAuthenticated()">Create your Order!</button>
       <p *ngIf="!auth.isAuthenticated()" class="text-warning">Login is required.</p>
   </div> 
 <h2>Pizzas:</h2>  
@@ -12,18 +12,17 @@
         <th>Description</th> 
         <th>Price($)</th> 
         <th>Quantity</th>
-        <th>Order</th> 
+        <th></th> 
       </tr>  
     </thead>  
     <tbody>  
-      <tr *ngFor="let pizza of pizzas"> 
-         
+      <tr *ngFor="let pizza of pizzas; let pos=index"> 
         <td>{{pizza.pizza}}</td>  
         <td>{{pizza.description}}</td>
         <td>{{pizza.price | currency : "USD" : true}}</td> 
-        <td>1</td> 
+        <!--td><input id="quantity" name="quantity" value="1" style="width: calc(100% - 12px);"></td --> 
         <td>  
-          <button (click)="AddToOrder(pizza)" [disabled]="!auth.isAuthenticated()" class="btn btn-info"> Add to Order</button>  
+          <button (click)="addToOrder(pos)" [disabled]="!auth.isAuthenticated()" class="btn btn-info"> Add to Order</button>  
           <p *ngIf="!auth.isAuthenticated()" class="text-warning">Login First.</p>
         </td>  
       </tr>  

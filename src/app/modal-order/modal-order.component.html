@@ -1,0 +1,37 @@
+<div class="modal-header">
+  <h4 class="modal-title" id="modal-basic-title">Order Details</h4>
+  <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+  <span aria-hidden="true">&times;</span>
+  </button>
+  </div>
+  <div class="modal-body">
+  <div>
+  <label>Date Time</label>
+  <input [value]="order.date_time" disabled="true" type="text">
+  </div>
+  <div *ngIf="order.user_mail">
+  <label>User Email</label>
+  <input [value]="order.user_mail" disabled="true" type="text">
+  </div>
+  <div>
+    <label>Total ($)</label>
+    <input [(ngModel)]="order.total" disabled="true" type="text">
+  </div>
+  <table class="table table-dark table-hover table-striped">  
+    <thead class="thead-light">  
+      <tr>  
+        <th>Pizza name</th>  
+        <th>Price($)</th> 
+        <th>Quantity</th>
+      </tr>  
+    </thead>  
+    <tbody>  
+      <tr *ngFor="let detail of order.order_detail"> 
+        <td>{{detail.pizza}}</td>  
+        <td>{{detail.price}}</td>
+        <td><input [(ngModel)]="detail.quantity" style="width: calc(100% - 12px);"></td> 
+      </tr>  
+    </tbody>  
+  </table>  
+  <button (click)="sendOrder()" type="submit" class="btn btn-primary w-100">Confirm Order!</button>
+  </div>

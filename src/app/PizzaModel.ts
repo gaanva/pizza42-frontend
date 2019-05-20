@@ -2,7 +2,7 @@ export class PizzaModel {
     id: Number;
     pizza: String;
     description: String;
-    price: Number;    
+    price: number;    
 
     constructor(pizza, description, price){
         this.id=0;
