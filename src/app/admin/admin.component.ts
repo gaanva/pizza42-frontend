@@ -14,6 +14,7 @@ export class AdminComponent implements OnInit {
 
   API_URL = 'http://localhost:3001';
   pizzas: PizzaModel[];
+  public isCollapsed = true;
   constructor(public auth: AuthService, private http: HttpClient, private modalService: NgbModal) { }
 
   ngOnInit() {
@@ -31,6 +32,7 @@ export class AdminComponent implements OnInit {
         data => {console.log(data);
                 alert('pizza created sucessfully!');
                 this.getAllPizzas();
+                this.isCollapsed = true;
                 this.pizzas = []},
         error => {
             console.log(error);
@@ -56,7 +58,7 @@ export class AdminComponent implements OnInit {
   remove(pos: number) {
     //this.awaitingPersonList.push(this.personList[id]);
     //call to remove service!
-    if(confirm("Are you sure you want to delete "+this.pizzas[pos].pizza)) {
+    if(confirm("Are you sure you want to delete "+this.pizzas[pos].pizza+ "?")) {
       if(this.pizzas[pos].id!=0){
         console.log(this.pizzas[pos]);
         const options = {

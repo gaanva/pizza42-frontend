@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { PizzaModel } from '../PizzaModel';
+import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-modal-update-pizza',
@@ -11,7 +11,7 @@ export class ModalUpdatePizzaComponent implements OnInit {
 
   @Input() public pizza:PizzaModel;
   @Output() passEntry: EventEmitter<PizzaModel> = new EventEmitter();
-  constructor(private modalService: NgbModal) { }
+  constructor(public activeModal: NgbActiveModal) { }
 
   ngOnInit() {
     console.log(this.pizza);

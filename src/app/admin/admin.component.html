@@ -1,6 +1,11 @@
 <h2>You are an Admin!</h2>
 <h3>Create new Pizzas</h3><pre>yeah, admin has the power!</pre>
-<div>
+<button type="button" class="btn btn-outline-primary" (click)="isCollapsed = !isCollapsed"
+          [attr.aria-expanded]="!isCollapsed" aria-controls="collapsedForm">
+    Show new pizza form.
+</button>
+
+<div id="collasedForm" [ngbCollapse]="isCollapsed">
   <div class="form-group">
     <input #name placeholder="pizza name"/>
   </div>
