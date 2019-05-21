@@ -1,21 +1,27 @@
-<pre>{{userList}}</pre>
-<div *ngFor="let order of orders">
-  <div class="table-responsive table-container">  
+<h2>Administration Panel for Marketing Area:</h2>  
+<div class="table-responsive table-container">  
   <table class="table table-dark table-hover table-striped">  
     <thead class="thead-light">  
       <tr>  
-        <th>Email</th>
-        <th>Email verified</th>
-        <th>Name</th> 
-        <th>nick name</th>
-        <th>Subtotal</th> 
+        <th>Connection Strategy</th>  
+        <th>Email</th> 
+        <th>Gender</th> 
+        <th>Logins Counts</th>
+        <th>Name</th>
+        <th>Nickname</th>
+        <th>Orders Created</th>
       </tr>  
     </thead>  
     <tbody>  
-      <tr *ngFor="let orderDet of order.order_detail"> 
-          
+      <tr *ngFor="let user of userList; let pos=index"> 
+        <td>{{user.connections}}</td>  
+        <td>{{user.email}}</td>
+        <td>{{user.gender}}</td>
+        <td>{{user.logins_count}}</td>
+        <td>{{user.name}}</td>
+        <td>{{user.nickname}}</td>
+        <td>{{user.orders_created}}</td>  
       </tr>  
     </tbody>  
   </table>  
-</div>
-</div>
+</div> 
