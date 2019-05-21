@@ -16,11 +16,11 @@
       </tr>  
     </thead>  
     <tbody>  
-      <tr *ngFor="let pizza of pizzas; let pos=index"> 
-        <td>{{pizza.pizza}}</td>  
-        <td>{{pizza.description}}</td>
-        <td>{{pizza.price | currency : "USD" : true}}</td> 
-        <!--td><input id="quantity" name="quantity" value="1" style="width: calc(100% - 12px);"></td --> 
+      <tr *ngFor="let preOrderPizza of preOrderDetails; let pos=index"> 
+        <td>{{preOrderPizza.pizza.pizza}}</td>  
+        <td>{{preOrderPizza.pizza.description}}</td>
+        <td>{{preOrderPizza.pizza.price | currency : "USD" : true}}</td> 
+        <td><input id="quantity" [(ngModel)]="preOrderPizza.quantity" style="width: calc(100% - 12px);"></td> 
         <td>  
           <button (click)="addToOrder(pos)" [disabled]="!auth.isAuthenticated()" class="btn btn-info"> Add to Order</button>  
           <p *ngIf="!auth.isAuthenticated()" class="text-warning">Login First.</p>

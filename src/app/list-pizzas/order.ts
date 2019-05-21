@@ -30,4 +30,13 @@ export class Order {
         return sumTotal;
     }
 
+    updateOrderTotal(){
+        var i;
+        let sumTotal:number = 0;
+        for(i=0; i<this.order_detail.length; i++){
+            sumTotal = sumTotal + this.order_detail[i].getSubtotal(); 
+        }
+        this.total = sumTotal;
+    }
+
 }

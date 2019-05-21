@@ -3,9 +3,10 @@
   <h3>What are you waiting for order the best pizza?</h3>
 </div>
 <div *ngFor="let order of orders">
-    <label>Date Time: {{order.date_time}}</label>
-    <label>User Mail: {{order.user_mail}}</label>
-    <label>Total: {{order.total}}</label>
+    <div>
+      <label><h4>Date Time: {{order.date_time}}</h4></label>
+      <label><h4>Total: {{order.total}}</h4></label>
+    </div>
     <div class="table-responsive table-container">  
     <table class="table table-dark table-hover table-striped">  
       <thead class="thead-light">  
@@ -18,8 +19,8 @@
       </thead>  
       <tbody>  
         <tr *ngFor="let orderDet of order.order_detail"> 
-            <td>{{orderDet.pizza}}</td>  
-          <td>{{orderDet.price}}</td>
+            <td>{{orderDet.pizza.pizza}}</td>  
+          <td>{{orderDet.pizza.price}}</td>
           <td>{{orderDet.quantity}}</td> 
           <td>{{orderDet.subtotal}}</td>  
         </tr>  

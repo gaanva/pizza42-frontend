@@ -1,18 +1,23 @@
+import { PizzaModel } from '../PizzaModel';
+
 export class OrderDetails {
-    private pizza:String;
-    private price: number;
+    private pizza:PizzaModel;
     private quantity: number;
     private subtotal: number;
 
-    constructor(pizza:String, price:number, quantity:number){
-        this.pizza = pizza;
-        this.price = price;
+    constructor(pizza:PizzaModel, quantity:number){
+        this.pizza=pizza;
         this.quantity = quantity;
-        this.subtotal = quantity*price;
+        this.subtotal = quantity*pizza.price;
     }
 
     getSubtotal():number{
+        this.subtotal = this.quantity * this.pizza.price;
         return this.subtotal;
     }
+
+
+
+
 
 }

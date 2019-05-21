@@ -20,4 +20,9 @@ export class ModalOrderComponent implements OnInit {
     console.log(this.order);
     this.passEntry.emit(this.order);
   }
+
+  updateOrderTotal(){
+    this.order.updateOrderTotal();
+    console.log(this.order);
+  }
 }

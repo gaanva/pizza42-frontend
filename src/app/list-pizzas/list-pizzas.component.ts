@@ -8,6 +8,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Order } from './order';
 import { ModalOrderComponent } from '../modal-order/modal-order.component';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { formatDate, DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-list-pizzas',
@@ -17,8 +18,9 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 export class ListPizzasComponent implements OnInit {
   userProfile:any;
   pizzas: PizzaModel[];
-  order_details:OrderDetails[] = [];
-  
+  orderDetails:OrderDetails[] = [];
+  preOrderDetails:OrderDetails[] = [];
+  pipe = new DatePipe('en-US');
   order: Order;
   API_URL: string = "http://localhost:3001/";
   constructor(
@@ -37,11 +39,19 @@ export class ListPizzasComponent implements OnInit {
     this.pizzaOrderService.getAllPizzas().subscribe(data=>{
       console.log('receiving pizza list!');
       this.pizzas = data;
+      this.preOrderList();
     },
     err=>{
       console.log('error receiving pizza list!');
       console.log(err);});
   };
+
+  preOrderList(){
+    for(let pizza of this.pizzas){
+      let quantity = 1;
+      this.preOrderDetails.push(new OrderDetails(pizza, quantity));
+    }
+  }
 
   createOrder():void{
     //ORDER Mock test object
@@ -93,15 +103,14 @@ export class ListPizzasComponent implements OnInit {
     }
   }
   addToOrder(pos):void{
-    let pizza:PizzaModel  = this.pizzas[pos];
-    this.order_details.push(new OrderDetails(pizza.pizza, pizza.price, 1));
-    alert('pizza added to the order!');
-    console.log(this.order_details);
+    this.orderDetails.push(this.preOrderDetails[pos]);
+    alert('pizza succesfully added to the order!');
+    console.log(this.orderDetails);
   }
 
   createPreOrder():boolean{
-    if(this.order_details.length !== 0){
-      this.order = new Order(new Date(), this.userProfile.email, this.order_details);
+    if(this.orderDetails.length !== 0){
+      this.order = new Order(this.pipe.transform(new Date(),'medium'), this.userProfile.email, this.orderDetails);
       return true;
     }else{
       alert("For Create your order first Add Pizzas to your order!");
