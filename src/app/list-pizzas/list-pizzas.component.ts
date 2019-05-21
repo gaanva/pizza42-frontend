@@ -73,6 +73,9 @@ export class ListPizzasComponent implements OnInit {
         data => {
           console.log(data);
           alert('Order created sucessfully!');
+          this.getAllPizzas();
+          this.preOrderDetails = [];
+          this.order = null;
           },
         error => {
           alert('Error creating new pizza42 Order.');  

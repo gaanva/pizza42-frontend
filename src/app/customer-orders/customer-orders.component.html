@@ -3,9 +3,17 @@
   <h3>Just wait! customers orders will be coming soon!!!</h3>
 </div>
 <div *ngFor="let order of orders">
-    <label>Date Time: {{order.date_time}}</label>
-    <label>User Mail: {{order.user_mail}}</label>
-    <label>Total: {{order.total}}</label>
+  <div class="card">
+    <div class="card-body">
+        
+      <h5 class="card-title">ORDER: </h5>
+      <ul class="list-group list-group-flush"></ul>
+      <li class="list-group-item">Date Time: {{order.date_time}}</li>
+      <li class="list-group-item">User Mail: {{order.user_mail}}</li>
+      <li class="list-group-item">Total: {{order.total}}</li>
+      <h5 class="card-title">DETAILS: </h5>
+  </div>
+  </div>
     <div class="table-responsive table-container">  
     <table class="table table-dark table-hover table-striped">  
       <thead class="thead-light">  
@@ -18,8 +26,8 @@
       </thead>  
       <tbody>  
         <tr *ngFor="let orderDet of order.order_detail"> 
-            <td>{{orderDet.pizza}}</td>  
-          <td>{{orderDet.price}}</td>
+            <td>{{orderDet.pizza.pizza}}</td>  
+          <td>{{orderDet.pizza.price}}</td>
           <td>{{orderDet.quantity}}</td> 
           <td>{{orderDet.subtotal}}</td>  
         </tr>  
