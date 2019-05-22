@@ -10,7 +10,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 })
 export class CustomerOrdersComponent implements OnInit {
   orders:Order[];
-  API_URL: string = "http://localhost:3001/";
+  API_URL: string = "http://3.14.88.49:3001/";
 
   constructor(public auth:AuthService, private http: HttpClient) { }
   
