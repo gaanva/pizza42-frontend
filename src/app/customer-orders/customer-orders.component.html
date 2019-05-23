@@ -1,5 +1,5 @@
 <h2>Customer Orders:</h2>  
-<div *ngIf="!orders">
+<div *ngIf="orders.length===0">
   <h3>Just wait! customers orders will be coming soon!!!</h3>
 </div>
 <div *ngFor="let order of orders">
