@@ -116,7 +116,7 @@ export class ListPizzasComponent implements OnInit {
       this.order = new Order(this.pipe.transform(new Date(),'medium'), this.userProfile.email, this.orderDetails);
       return true;
     }else{
-      alert("For Create your order first Add Pizzas to your order!");
+      alert("To Create your order first Add Pizzas !");
       return false;
     }
   }
