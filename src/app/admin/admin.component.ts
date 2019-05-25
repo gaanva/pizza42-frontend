@@ -12,7 +12,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 })
 export class AdminComponent implements OnInit {
 
-  API_URL = 'http://3.14.88.49:3001';
+  API_URL = 'http://18.218.126.230:3001';
   pizzas: PizzaModel[];
   public isCollapsed = true;
   constructor(public auth: AuthService, private http: HttpClient, private modalService: NgbModal) { }
