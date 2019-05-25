@@ -12,7 +12,8 @@ export class AuthService {
   private _scopes: string;
 
   userProfile: any; //for query user information
-  requestedScopes: string = 'openid profile read:pizza create:pizza read:orders read:myOrders read:users';
+  //requestedScopes: string = 'openid profile read:pizza create:pizza read:orders read:myOrders read:users';
+  requestedScopes: string = 'openid profile';
 
   auth0 = new auth0.WebAuth({
     clientID: AUTH_CONFIG.clientID,
