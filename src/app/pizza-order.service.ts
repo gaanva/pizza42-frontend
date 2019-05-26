@@ -11,7 +11,7 @@ export class PizzaOrderService {
 
   constructor(public auth: AuthService, private http: HttpClient) { }
 
-  API_URL: string = "http://3.14.88.49:3001/";
+  API_URL: string = "http://18.218.126.230:3001/";
 
   getAllPizzas(){
     return this.http.get<PizzaModel[]>(this.API_URL, {
