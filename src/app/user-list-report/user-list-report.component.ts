@@ -9,7 +9,7 @@ import { AuthService } from '../auth/auth.service';
   styleUrls: ['./user-list-report.component.css']
 })
 export class UserListReportComponent implements OnInit {
-  API_URL: string = "http://3.14.88.49:3001/";
+  API_URL: string = "http://18.218.126.230:3001/";
   userList: UsersRegistered[] = [];
 
   constructor(public auth:AuthService, private http: HttpClient) {

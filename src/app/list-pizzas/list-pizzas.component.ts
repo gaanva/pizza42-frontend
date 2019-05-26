@@ -22,7 +22,7 @@ export class ListPizzasComponent implements OnInit {
   preOrderDetails:OrderDetails[] = [];
   pipe = new DatePipe('en-US');
   order: Order;
-  API_URL: string = "http://3.14.88.49:3001/";
+  API_URL: string = "http://18.218.126.230:3001/";
   constructor(
     private pizzaOrderService: PizzaOrderService, 
     public auth:AuthService, 

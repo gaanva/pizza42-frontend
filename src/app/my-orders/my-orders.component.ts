@@ -11,7 +11,7 @@ import { Order } from '../list-pizzas/order';
 export class MyOrdersComponent implements OnInit {
   user_profile:any;
   orders:Order[];
-  API_URL: string = "http://3.14.88.49:3001/";
+  API_URL: string = "http://18.218.126.230:3001/";
   constructor(public auth:AuthService, private http: HttpClient) { }
 
   ngOnInit() {
